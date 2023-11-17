@@ -20,8 +20,8 @@ defmodule FutureLiveviewModalWeb.ModalLive.Index do
         <div class="bg-slate-200 p-8 rounded-lg grid gap-8">
           <h1 class="text-3xl">Modals</h1>
 
-          <.button phx-click={Modal.show("some-modal")}>See Modal</.button>
-          <Modal.headless_modal :let={close} id="some-modal">
+          <.button phx-click={Modal.show("modal")}>See Modal</.button>
+          <Modal.headless_modal :let={%{close: close}} id="modal" on_cancel={JS.dispatch("test-on-cancel")}>
             <h1>Hello World!</h1>
             <.button phx-click={close}>Close</.button>
           </Modal.headless_modal>
