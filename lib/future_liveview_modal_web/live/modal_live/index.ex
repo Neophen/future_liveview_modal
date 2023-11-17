@@ -15,16 +15,18 @@ defmodule FutureLiveviewModalWeb.ModalLive.Index do
   @impl LiveView
   def render(assigns) do
     ~H"""
-    <div class="">
+    <div>
       <div class="h-screen grid place-items-center">
         <div class="bg-slate-200 p-8 rounded-lg grid gap-8">
           <h1 class="text-3xl">Modals</h1>
 
-          <.button onclick="document.getElementById('some-modal').showModal()">See Modals</.button>
+          <.button phx-click={Modal.show("some-modal")}>See Modal</.button>
+          <Modal.headless_modal :let={close} id="some-modal">
+            <h1>Hello World!</h1>
+            <.button phx-click={close}>Close</.button>
+          </Modal.headless_modal>
         </div>
       </div>
-
-      <Modal.headless_modal />
     </div>
     """
   end
