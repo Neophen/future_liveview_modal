@@ -18,6 +18,7 @@ defmodule FutureLiveviewModalWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    live "/modals", ModalLive.Index
   end
 
   # Other scopes may use custom stacks.
