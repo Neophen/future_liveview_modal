@@ -5,11 +5,30 @@ defmodule FutureLiveviewModalWeb.Modal do
 
   attr :id, :string, required: true
   attr :show, :boolean, default: false
+  attr :on_cancel, JS, default: %JS{}
+  slot :inner_block, required: true
+
+  def modal(assigns) do
+    ~H"""
+    <.headless_modal
+      :let={actions}
+      id={@id}
+      show={@show}
+      on_cancel={@on_cancel}
+      class="modal-animation p-8 rounded-xl bg-white"
+    >
+      <%= render_slot(@inner_block, actions) %>
+    </.headless_modal>
+    """
+  end
+
+  attr :id, :string, required: true
+  attr :show, :boolean, default: false
   attr :class, :any, default: nil
   attr :on_cancel, JS, default: %JS{}
   slot :inner_block, required: true
 
-  def headless_modal(assigns) do
+  defp headless_modal(assigns) do
     ~H"""
     <dialog
       id={@id}

@@ -21,10 +21,17 @@ defmodule FutureLiveviewModalWeb.ModalLive.Index do
           <h1 class="text-3xl">Modals</h1>
 
           <.button phx-click={Modal.show("modal")}>See Modal</.button>
-          <Modal.headless_modal :let={%{close: close}} id="modal" on_cancel={JS.dispatch("test-on-cancel")}>
-            <h1>Hello World!</h1>
-            <.button phx-click={close}>Close</.button>
-          </Modal.headless_modal>
+          <Modal.modal
+            :let={%{close: close, cancel: cancel}}
+            id="modal"
+            on_cancel={JS.dispatch("test-on-cancel")}
+          >
+            <div class="space-y-4">
+              <h1>Hello World!</h1>
+              <.button phx-click={cancel}>Cancel</.button>
+              <.button phx-click={close}>Close</.button>
+            </div>
+          </Modal.modal>
         </div>
       </div>
     </div>

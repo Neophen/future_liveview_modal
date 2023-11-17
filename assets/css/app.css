@@ -3,3 +3,43 @@
 @import "tailwindcss/utilities";
 
 /* This file is for your main application CSS */
+@layer base {
+  html:has(dialog[open]) {
+    overflow: hidden;
+  }
+
+  /* Marko Dialog */
+
+  .modal-animation {
+    --animation-speed: 500ms;
+
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: auto;
+    overscroll-behavior: contain;
+    overscroll-behavior-block: contain;
+    overscroll-behavior-inline: contain;
+
+    &::backdrop {
+      opacity: 0;
+    }
+
+    &[open] {
+      @starting-style {
+        transform: translateY(100%);
+        opacity: 0;
+      }
+
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    box-shadow: 0 0 0 300vw rgb(3 3 3 / 80%);
+    transform: translateY(100%);
+    opacity: 0;
+    transition:
+      transform var(--animation-speed),
+      opacity var(--animation-speed),
+      display var(--animation-speed) allow-discrete;
+  }
+}
