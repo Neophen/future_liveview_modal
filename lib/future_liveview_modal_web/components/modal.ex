@@ -3,9 +3,9 @@ defmodule FutureLiveviewModalWeb.Modal do
 
   def headless_modal(assigns) do
     ~H"""
-    <div class="">
-      Hello World!
-    </div>
+    <dialog id="some-modal" >
+        <h1>Hello World!</h1>
+    </dialog>
     """
   end
 end

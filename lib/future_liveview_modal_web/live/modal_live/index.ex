@@ -20,17 +20,12 @@ defmodule FutureLiveviewModalWeb.ModalLive.Index do
         <div class="bg-slate-200 p-8 rounded-lg grid gap-8">
           <h1 class="text-3xl">Modals</h1>
 
-          <.button>See Modals</.button>
+          <.button onclick="document.getElementById('some-modal').showModal()">See Modals</.button>
         </div>
       </div>
 
       <Modal.headless_modal />
     </div>
     """
-  end
-
-  @impl LiveView
-  def handle_event("delete", %{"id" => id}, socket) do
-    {:noreply, socket}
   end
 end
